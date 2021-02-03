@@ -16,4 +16,7 @@ jobs:
       - run: npm install
 
       - name: Run Jasmine
-        run: npx karma start --single-run
+        run: |
+          export DISPLAY=':99.0'
+          Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+          npx karma start --single-run
